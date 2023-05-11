@@ -8,7 +8,7 @@ This repository was created together with [this blog post](https://medium.com/ha
 we have 2 branches
 
 - master works for provisioned instances
-- serverless works for serverless clusters
+- serverless works for serverles and provisioned clusters
 
 #### Prerequisites
 - Install Node.js (https://nodejs.org/en/download/)
