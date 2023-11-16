@@ -2,12 +2,8 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Automatic database shut down and start up Lambda functions
 Parameters:
-  InstanceID: # RDS Cluster ID
+  ClusterID: # RDS Cluster ID
     Type: String
-    Default: ps-rds-original-cluster
-  InstanceARN: # RDS Cluster ARN
-    Type: String
-    Default: arn:aws:rds:eu-west-2:341150754668:cluster:ps-rds-original
 Globals:
   Function:
     MemorySize: 128
@@ -16,7 +12,7 @@ Globals:
     Runtime: nodejs16.x
     Environment:
       Variables:
-        INSTANCE_IDENTIFIER: !Ref InstanceID
+        DB_CLUSTER: !Sub arn:aws:rds:${AWS::Region}:${AWS::AccountId}:cluster:${ClusterID}
 Resources:
   DBShutDownFunction:
     Type: AWS::Serverless::Function
@@ -28,7 +24,7 @@ Resources:
             - Effect: Allow
               Action:
                 - rds:StopDBCluster
-              Resource: !Ref InstanceARN
+              Resource: !Sub arn:aws:rds:${AWS::Region}:${AWS::AccountId}:cluster:${ClusterID}
       Events:
         Schedule1:
           Type: Schedule
@@ -47,7 +43,7 @@ Resources:
             - Effect: Allow
               Action:
                 - rds:StartDBCluster
-              Resource: !Ref InstanceARN
+              Resource: !Sub arn:aws:rds:${AWS::Region}:${AWS::AccountId}:cluster:${ClusterID}
       Events:
         Schedule1:
           Type: Schedule
