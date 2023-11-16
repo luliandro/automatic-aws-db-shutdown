@@ -1,10 +1,10 @@
 const AWS = require('aws-sdk');
 
-module.exports = (instanceIdentifier) => {
+module.exports = (dbCluster) => {
     return new Promise((resolve, reject) => {
         const rds = new AWS.RDS();
         const params = {
-            DBClusterIdentifier: instanceIdentifier,
+            DBClusterIdentifier: dbCluster,
         };
         rds.stopDBCluster(params, (err, data)=> {
             if (err) {

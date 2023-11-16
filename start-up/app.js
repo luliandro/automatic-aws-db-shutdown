@@ -1,8 +1,7 @@
-const startInstance = require('./start');
+const startCluster = require('./start');
 
 exports.lambdaHandler = async (event, context) => {
-    const instanceIdentifier = process.env.INSTANCE_IDENTIFIER;
-    const result = await startInstance(instanceIdentifier);
+    const result = await startCluster(process.env.DB_CLUSTER);
     return {
         statusCode: 200,
         body: result,

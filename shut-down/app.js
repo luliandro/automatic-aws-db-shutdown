@@ -1,8 +1,7 @@
-const stopInstance = require('./stop');
+const stopCluster = require('./stop');
 
 exports.lambdaHandler = async (event, context) => {
-    const instanceIdentifier = process.env.INSTANCE_IDENTIFIER;
-    const result = await stopInstance(instanceIdentifier);
+    const result = await stopCluster(process.env.DB_CLUSTER);
     return {
         statusCode: 200,
         body: result,
