@@ -29,7 +29,7 @@ sam package --template-file template.yaml --s3-bucket brooklyn-archive-dev --out
 Deploy
 
 ```bash
-sam deploy --template-file outputTemplate.yaml --stack-name dev-auto-db-shutdown-stack --capabilities CAPABILITY_IAM --profile dev
+sam deploy --template-file outputTemplate.yaml --stack-name dev-auto-db-shutdown-stack  --capabilities CAPABILITY_IAM --parameter-overrides ParameterKey=ClusterID,ParameterValue=dev-rds-cluster --profile dev
 ``` 
 
 Delete stack
