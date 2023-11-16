@@ -4,10 +4,10 @@ Description: Automatic database shut down and start up Lambda functions
 Parameters:
   InstanceID: # RDS Cluster ID
     Type: String
-    Default: qa1-rds-provisioned-new
+    Default: ps-rds-original-cluster
   InstanceARN: # RDS Cluster ARN
     Type: String
-    Default: arn:aws:rds:eu-west-2:341150754668:cluster:qa1-rds-provisioned
+    Default: arn:aws:rds:eu-west-2:341150754668:cluster:ps-rds-original
 Globals:
   Function:
     MemorySize: 128

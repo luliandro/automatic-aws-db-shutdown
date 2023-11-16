@@ -3,12 +3,6 @@
 This repository was created together with [this blog post](https://medium.com/hatchsoftware/saving-money-by-automatically-shutting-down-rds-instances-using-aws-lambda-and-aws-sam-925fd86592b5).
 
 
-## Serverless clusters and provisioned instances
-
-we have 2 branches
-
-- master works for provisioned instances
-- serverless works for serverless clusters
 
 #### Prerequisites
 - Install Node.js (https://nodejs.org/en/download/)
@@ -29,19 +23,19 @@ sam local invoke <Function to invoke>
 Package
 
 ```bash
-sam package --template-file template.yaml --s3-bucket brooklyn-archive-qa1 --output-template-file outputTemplate.yaml
+sam package --template-file template.yaml --s3-bucket brooklyn-archive-dev --output-template-file outputTemplate.yaml --profile dev
 ```
 
 Deploy
 
 ```bash
-sam deploy --template-file outputTemplate.yaml --stack-name qa1-auto-db-shutdown-stack --capabilities CAPABILITY_IAM
+sam deploy --template-file outputTemplate.yaml --stack-name dev-auto-db-shutdown-stack --capabilities CAPABILITY_IAM --profile dev
 ``` 
 
 Delete stack
 
 ```bash
-sam delete --stack-name qa1-auto-db-shutdown-stack
+sam delete --stack-name dev-auto-db-shutdown-stack
 ``` 
 #### Automated
 
