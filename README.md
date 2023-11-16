@@ -29,19 +29,19 @@ sam local invoke <Function to invoke>
 Package
 
 ```bash
-sam package --template-file template.yaml --s3-bucket brooklyn-archive-qa1 --output-template-file outputTemplate.yaml
+sam package --template-file template.yaml --s3-bucket brooklyn-archive-dev --output-template-file outputTemplate.yaml --profile dev
 ```
 
 Deploy
 
 ```bash
-sam deploy --template-file outputTemplate.yaml --stack-name qa1-auto-db-shutdown-stack --capabilities CAPABILITY_IAM
+sam deploy --template-file outputTemplate.yaml --stack-name dev-auto-db-shutdown-stack --capabilities CAPABILITY_IAM --profile dev
 ``` 
 
 Delete stack
 
 ```bash
-sam delete --stack-name qa1-auto-db-shutdown-stack
+sam delete --stack-name dev-auto-db-shutdown-stack
 ``` 
 #### Automated
 
